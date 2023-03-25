@@ -4,6 +4,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 import { AuthGuardService } from '../auth/auth-guard.service';
 import { interval } from 'rxjs';
 
+
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',
@@ -148,5 +149,24 @@ export class QuizComponent implements OnInit {
     this.progress = ((this.currentQuestion / this.questionList.length) * 100).toString();
     return this.progress;
 
+  }
+
+  // drop(event: CdkDragDrop<string[]>) {
+  //   if (event.previousContainer === event.container) {
+  //     moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+  //   } else {
+  //     transferArrayItem(
+  //       event.previousContainer.data,
+  //       event.container.data,
+  //       event.previousIndex,
+  //       event.currentIndex,
+  //     );
+  //   }
+  // }
+  // todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
+  
+  done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.questionList, event.previousIndex, event.currentIndex);
   }
 }

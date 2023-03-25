@@ -20,7 +20,8 @@
   </div> -->
 <!-- <div *ngIf="hidden1"> -->
   <div class="container" *ngIf="hidden1">
-   
+<mat-card>
+<mat-card-content>
  <!-- </div> -->
  <!-- <div class="container" *ngIf="hidden1"> -->
     <!-- <h2>What is Html comment?</h2>
@@ -75,21 +76,40 @@
             <div class="progress mb-3">
                 <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [ngStyle]="{'width':progress+'%'}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
-            <div class="question" cdkDrag>
+            
+            <div class="question"  >
+                
                 <!-- <div class="card"> -->
                     <h3>{{questionList[currentQuestion]?.questionText}}</h3>
+                    
                 <!-- </div> -->
             </div>
             <div class="options">
+                
                 <ol *ngFor="let option of questionList[currentQuestion]?.options">
                     <li (click)="answer(currentQuestion+1,option)">
-                        <div appChangeBg [isCorrect]="option.correct"  class="card" cdkDrag>
-                            {{option.text}}
+                        <!-- <div
+                        cdkDropList
+                        [cdkDropListData]="todo"
+                        class="example-list"
+                        (cdkDropListDropped)="drop($event)">
+                        <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+                      </div> -->
+          
+                      <div class="example-box" cdkDrag>
+                      <div   class="example-list">
+                        <div appChangeBg [isCorrect]="option.correct"   class="card example-box"  >
+                           
+                             <b>{{option.text}}</b>
+                             <!-- <div></div> -->
                         </div>
+                        </div>
+                        
+                    </div>
                     </li>
 
                 </ol>
-            </div>
+            </div>                  
             <div class="button bn">
             <div class="d-flex justify-content-between">
                 <button [disabled]="currentQuestion===0"mat-raised-button color="accent" class="btn" (click)="previousQuestion()">Previous</button>
@@ -120,5 +140,14 @@
 </div>
 <!-- </mat-card-content>
 </mat-card> -->
+</mat-card-content>
+</mat-card>
  </div>
 <!-- </div> -->
+<!-- <div class="example-box" cdkDragLockAxis="y" cdkDrag>
+  I can only be dragged up/down
+</div>
+
+<div class="example-box" cdkDragLockAxis="x" cdkDrag>
+  I can only be dragged left/right
+</div> -->
